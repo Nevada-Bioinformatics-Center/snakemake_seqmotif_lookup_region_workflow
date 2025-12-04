@@ -67,15 +67,14 @@ def get_full_bam_index_path(wildcards):
 
 rule all:
     input:
-        os.path.join(config["WORK_DIR"], config["OUTPUT_MATRIX"]),
-        os.path.join(config["WORK_DIR"], config["OUTPUT_HTML"])
+        os.path.join(config["WORK_DIR"], config["OUTPUT_MATRIX"])
 
 rule index_bam:
     input:
         os.path.join(config["INPUT_DIR"], "{filename}.bam")
     output:
         os.path.join(config["INPUT_DIR"], "{filename}.bam.bai")
-    conda: "envs/samtools.yaml"
+    #conda: "envs/samtools.yaml"
     container: SAMTOOLS_IMAGE 
     threads: 2
     resources: time_min=220, mem_mb=8000, cpus=2
@@ -94,7 +93,7 @@ rule extract_and_convert:
         region = config["TARGET_REGION"]
     log:
         os.path.join(config["WORK_DIR"], "logs", "{sample}.extract.log")
-    conda: "envs/samtools.yaml"
+    #conda: "envs/samtools.yaml"
     container: SAMTOOLS_IMAGE 
     threads: 2
     resources: time_min=220, mem_mb=8000, cpus=2
@@ -116,12 +115,11 @@ rule analyze_all:
         motifs = config["MOTIF_TSV"]
     output:
         matrix = os.path.join(config["WORK_DIR"], config["OUTPUT_MATRIX"]),
-        html_plot = os.path.join(config["WORK_DIR"], config["OUTPUT_HTML"])
     params:
         input_dir = os.path.join(config["WORK_DIR"], "fasta_reads")
     log:
         os.path.join(config["WORK_DIR"], "logs", "final_analysis.log")
-    conda: "envs/python_analysis.yaml"
+    #conda: "envs/python_analysis.yaml"
     container: PYTHON_IMAGE
     threads: 2
     resources: time_min=220, mem_mb=8000, cpus=2
@@ -133,6 +131,5 @@ rule analyze_all:
         python batch_motif_analyzer.py \\
             -i {params.input_dir} \\
             -m {input.motifs} \\
-            -o {output.matrix} \\
-            --plot {output.html_plot} 2> {log}
+            -o {output.matrix} 2> {log}
         """
