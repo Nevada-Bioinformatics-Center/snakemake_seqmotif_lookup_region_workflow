@@ -45,3 +45,11 @@ using `$N` cores or run it in a cluster environment via
     snakemake --use-singularity --cluster qsub --jobs 100
 
 See the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/executable.html) for further details.
+
+## batch_motif_analyzer.py
+
+This, [`batch_motif_analyzer.py`](batch_motif_analyzer.py), is the main analysis script. The snakemake rules beforehand takes in a directory of alignment BAM files and creates .fasta files for the reads within extracted region.
+
+The batch_motif_analyzer.py takes in as input a directory location of extracted reads (`--input`) and a motifs file in TSV format (`--motifs`) to run the analysis. The motifs file must have a header line where the first column is the name of the motif and the second column is the sequence of the motif to search. Additionally, the analysis assumes the first entry is the WT motif which will be labeled as such in the output `Plotly` HTML output report. See example file: [`motifs.txt`](motifs.txt)
+
+For output, use the `--output` option to name the output matrix of counts for each Motif and sample. Optionally, define a `--plot` HTML file to save an interactive output of the WT readcounts x Other readcounts.
