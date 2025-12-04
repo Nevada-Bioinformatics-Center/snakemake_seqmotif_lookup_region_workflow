@@ -1,10 +1,10 @@
 # snakemake_seqmotif_lookup_region_workflow
 
-A snakemake workflow for extracting reads from a BAM file aligned to a certain region. Using a motifs.txt file, then per sample count the number of reads with certain motifs.
+A snakemake workflow for extracting reads from a BAM file aligned to a certain region. Using a motifs.txt file, calculate the number of reads with defined motifs per-sample.
 
 ## Requirements
 
-To run this pipeline, you will need [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) installed. Additionally, you will either need to install the required programs and packages on your system, or will need to run Snakemake using a container management system like Singularity, Apptainer or Docker.
+To run this pipeline, you will need [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) installed. Additionally, you will either need to install the required programs and packages on your system or use the `--use-conda` flag to install the conda environemtns or use the `--use-singularity` flag to run Snakemake using a container management system like Singularity or Apptainer (typically only on HPCs).
 
 ### Programs Used
 
