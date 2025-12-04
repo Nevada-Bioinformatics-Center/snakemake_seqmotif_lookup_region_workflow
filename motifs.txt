@@ -1,0 +1,5 @@
+variant name	sequence
+exon5WT_exon6	GAGATGATGAAGCCTACAGA
+exon5del_intron	GCAAGAACTGATGGAGT
+exon5del_exon6	ACAACCTGAACAAGCCTACAGA
+exon5early_exon6	ACCTGAACAAGCCTACAGA

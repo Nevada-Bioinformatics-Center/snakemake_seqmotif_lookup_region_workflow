@@ -1,0 +1,20 @@
+# --- Snakemake Workflow Configuration ---
+
+# Directory containing the input BAM files
+INPUT_DIR: "/data/gpfs/assoc/inbre/projects/misty_riddle/rnaseq_2018/sequence_del_analysis/alignments"
+
+# DELIMITER to split on for sample name creation.
+# default splits on .rep1, .sorted.bam and  .sortedByCoord.out.bam
+DELIMITER: "_CRR"
+
+# Directory where intermediate and final results will be stored
+WORK_DIR: "results"
+
+# Genomic region for read extraction (Chromosome:Start-End)
+TARGET_REGION: "NC_064408.1:16197400-16202550"
+
+# Path to the motif TSV file (Name \t Sequence)
+MOTIF_TSV: "/data/gpfs/assoc/inbre/projects/misty_riddle/rnaseq_2018/sequence_del_analysis/motifs.txt"
+
+# Final output matrix filename
+OUTPUT_MATRIX: "motif_analysis_matrix.tsv"
